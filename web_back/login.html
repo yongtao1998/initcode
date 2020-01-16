@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/util/config.js"></script>
+    <script src="./js/util/user.js"></script>
 </head>
 
 <body>
@@ -23,11 +26,41 @@
             <form class="login_form">
                 <i class="iconfont icon-user"></i>
                 <i class="iconfont icon-key"></i>
-                <input type="text" class="input_txt" placeholder="邮箱/手机号">
+                <input id="username" type="text" class="input_txt" placeholder="邮箱/手机号">
                 <input type="password" class="input_pass" placeholder="密码">
-                <input type="submit" class="input_sub" value="登 录">
+                <!-- 在form表单中 如果不想有跳转动作 把submit改为 button 就可以了 -->
+                <input id="btn" type="button" class="input_sub" value="登 录">
             </form>
         </div>
-    </div> 
+    </div>
 </body>
+
+<script>
+    // 1.用户登录
+    // 思路:
+    // 给按钮添加点击事件
+    // 1. 收集用户的信息 简单判断
+    // 2. 请求ajax接口 根据接口的反馈做后续动作
+    $("#btn").click(function() {
+        var username = $(".input_txt").val().trim()
+        var password = $(".input_pass").val().trim()
+
+        if (username.length == 0 && password.length == 0) {
+            return
+        }
+        // 用户登录
+        user.login(username, password).then(function(res) {
+            console.log(res);
+            // 获取 Ajax的返回状态 根据状态来做出动作
+            if (res.code == 200) {
+                //跳转到主页
+                location.href = './index.html'
+            } else {
+                alert(res.msg)
+            }
+        })
+
+    })
+</script>
+
 </html>
