@@ -1,16 +1,16 @@
-var user = {
-    login: function(name, password) {
-        // $.post()  返回的是一个对象 
-        // 这个对象有then方法，then()的功能 是获取返回的数据
+class User {
+    // constructor() {
+    // }
+    login(name, password) {
         return $.post(APILIST.login, {
             'user_name': name,
             'password': password
         })
-    },
-    logout: function() {
+    }
+    logout() {
         return $.post(APILIST.logout)
-    },
-    getInfo: function() {
+    }
+    getInfo() {
         return $.get(APILIST.getInfo)
     }
 }

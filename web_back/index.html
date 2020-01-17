@@ -112,7 +112,8 @@
 
 </body>
 <script>
-    // 获取管理员信息
+    var user = new User()
+        // 获取管理员信息
     user.getInfo().then(function(res) {
         if (res.code == 200) {
             $("#adName").text(res.data.nickname)
