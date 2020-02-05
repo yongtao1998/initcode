@@ -15,10 +15,8 @@ class Article {
     }
 
     //根据id获取文章的详情
-    getByid(id) {
-        return $.get(APILIST.article_get, {
-            'id': id
-        })
+    getById(id) {
+        return $.get(APILIST.article_get, { 'id': id })
     }
 
     // 删除文章
@@ -31,6 +29,20 @@ class Article {
     add(fd) {
         return $.ajax({
             url: APILIST.article_add,
+            type: 'post',
+            data: fd,
+            processData: false, //不允许处理数据
+            contentType: false, //不要设置请求头
+        })
+    }
+
+    /**
+     * 保存文章编辑
+     * @param {*} fd  formData对象
+     */
+    edit(fd) {
+        return $.ajax({
+            url: APILIST.article_edit,
             type: 'post',
             data: fd,
             processData: false, //不允许处理数据

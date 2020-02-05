@@ -21,5 +21,7 @@ var APILIST = {
     // 删除文章
     article_del: BASEURL + '/admin/article_delete',
     // 添加文章
-    article_add: BASEURL + '/admin/article_publish'
+    article_add: BASEURL + '/admin/article_publish',
+    // 保存文章的修改
+    article_edit: BASEURL + '/admin/article_edit'
 }

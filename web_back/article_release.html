@@ -107,8 +107,14 @@
             fd.set('content', tinyMCE.activeEditor.getContent())
 
             article.add(fd).then(function(res) {
-                console.log(res);
-
+                if (res.code === 201) {
+                    alert('发布成功');
+                    // reset是表单（dom对象）的方法
+                    // 用来重置
+                    $('#myform')[0].reset();
+                } else {
+                    alert(res.msg)
+                }
             })
         })
 
@@ -133,12 +139,13 @@
             //1.获取当前用户选择的是那个文件
             var curFile = this.files[0]
             if (curFile) {
-                console.log(curFile);
+                // console.log(curFile);
+
                 // URL.createObjectURL(文件对象) 
                 // 是一个浏览器提供的一个方法：用于创建对象的临时连接地址。
-
                 var curFileUrl = URL.createObjectURL(curFile)
-                console.log(curFileUrl);
+                    // console.log(curFileUrl);
+
                 // 2.把这个地址设置成imgPreview的src
                 $('#imgPreview').attr('src', curFileUrl)
             } else {
