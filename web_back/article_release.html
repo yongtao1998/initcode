@@ -35,8 +35,9 @@
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">文章封面：</label>
                     <div class="col-sm-10">
-                        <input name="cover" type="file" id="exampleInputFile">
+                        <input name="cover" type="file" id="cover">
                     </div>
+                    <img id="imgPreview" style="border:1px solid #ccc;padding:2px;margin-left:20px;width: 200px;" src="../web_back/images/default_cover.png" alt="">
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章类别：</label>
@@ -88,13 +89,11 @@
         {{/each}}
     </script>
     <script>
-        var category = new Category()
-        var article = new Article()
-            // 1. 发布文章
-            // 思路:
-            // 给btnAdd添加点击事件
-            // (1) 收集用户信息,简单判断
-            //（2）调用接口，实现添加，根据反馈，做后续操作
+        // 1. 发布文章
+        // 思路:
+        // 给btnAdd添加点击事件
+        // (1) 收集用户信息,简单判断
+        //（2）调用接口，实现添加，根据反馈，做后续操作
         $('#btnAdd').click(function() {
             // alert(1)
             // 获取表单中用户填入的信息
@@ -116,12 +115,35 @@
 
         // 2.获取文章类别，并显示 
         category.get().then(function(res) {
-            console.log(res);
             if (res.code == 200) {
                 var htmlStr = template('tmp', res)
                 $('#selCategory').html(htmlStr)
             } else {
                 alert(res.msg)
+            }
+        })
+
+        // 3. 图片预览
+        $("#cover").change(function() {
+
+            // 用户在input上进行了操作   
+            // console.log( this.files); //当前用户所有选中的文件放在这里这集合中
+            // console.log( this.files[0]); //选中第一个文件
+
+            //1.获取当前用户选择的是那个文件
+            var curFile = this.files[0]
+            if (curFile) {
+                console.log(curFile);
+                // URL.createObjectURL(文件对象) 
+                // 是一个浏览器提供的一个方法：用于创建对象的临时连接地址。
+
+                var curFileUrl = URL.createObjectURL(curFile)
+                console.log(curFileUrl);
+                // 2.把这个地址设置成imgPreview的src
+                $('#imgPreview').attr('src', curFileUrl)
+            } else {
+                // 当前用户没有选中任何图片，还是使用初始图片
+                $('#imgPreview').attr('src', '../web_back/images/default_cover.png')
             }
         })
     </script>

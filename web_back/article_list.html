@@ -122,7 +122,7 @@
             <td class="text-center">{{item.date}}</td>
             <td class="text-center">{{item.state}}</td>
             <td class="text-center">
-                <a href="article_edit.html" class="btn btn-default btn-xs">编辑</a>
+                <a href="article_edit.html?id={{item.id}}" class="btn btn-default btn-xs">编辑</a>
                 <a href="javascript:;" data-id="{{item.id}}" class="btn btn-danger btn-xs del">删除</a>
             </td>
         </tr>
@@ -135,8 +135,6 @@
         var curStatus = ''; // 全局变量，表示当前要查询文章的状态
         var curTotalPage; // 记录上一次获取的总页数
 
-        var category = new Category()
-        var article = new Article()
 
         // 1. 获取所有的文章类别信息，并显示在下拉列表中
         // 思路：

@@ -25,4 +25,7 @@ class Category {
             'slug': slug
         })
     }
+
+
 }
+var category = new Category()

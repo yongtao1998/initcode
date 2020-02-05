@@ -48,8 +48,7 @@
         if (username.length == 0 && password.length == 0) {
             return
         }
-        var user = new User()
-            // 用户登录
+        // 用户登录
         user.login(username, password).then(function(res) {
             console.log(res);
             // 获取 Ajax的返回状态 根据状态来做出动作

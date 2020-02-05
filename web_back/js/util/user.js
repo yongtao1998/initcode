@@ -14,3 +14,4 @@ class User {
         return $.get(APILIST.getInfo)
     }
 }
+var user = new User()
