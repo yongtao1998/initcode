@@ -48,7 +48,7 @@
         <div class="left_con setfr">
 
             <div class="list_title">
-                <h3>科 技</h3>
+                <h3 id="cateName">科 技</h3>
             </div>
 
             <div class="common_news_list">
@@ -124,7 +124,7 @@
             </div>
 
             <div id="pagination" class="page"></div>
-            <script>
+            <!-- <script>
                 $(function() {
                     $("#pagination").pagination({
                         currentPage: 2,
@@ -134,7 +134,7 @@
                         }
                     });
                 });
-            </script>
+            </script> -->
 
         </div>
         <div class="right_con setfl">
@@ -234,12 +234,15 @@
     <li><a href="./list.html?id={{item.id}}">{{item.name}}</a></li>
     {{/if}} {{/each}}
 </script>
+
+<!-- 文章列表 -->
+
+
+<!-- 排行榜 -->
+
 <script>
     // 1. 从地址栏中获取出id
-
     var id = window.location.search.substr(4)
-    console.log(id);
-
 
     // 2. 显示菜单导航菜单，并把当前的文章类别高亮显示 
     // 获取文章的类型并显示
@@ -256,6 +259,12 @@
 
         // 追加一些内容
         $('#level_two_menu').append(htmlStr)
+
+        res.data.forEach(function(item) {
+            if (item.id == id) {
+                $('#cateName').html(item.name)
+            }
+        })
     })
 </script>
 

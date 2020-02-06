@@ -193,9 +193,8 @@
         </li>
         {{/each}}
 </script>
-<!-- 排行榜
-        前三名有自已的class
-    -->
+
+<!-- 排行榜 前三名有自已的class -->
 <script id="tmpRank" type="text/html">
     {{each data item idx}} {{if idx == 0}}
     <li><span class="first">{{idx+1}}</span><a href="#">{{item.title}}</a></li>
