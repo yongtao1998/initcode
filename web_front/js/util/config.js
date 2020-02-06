@@ -1,8 +1,10 @@
+// 配置文件
+// 这个项目中所有用到的接口地址
 // 所有接口的基地址
 var BASEURL = 'http://localhost:8000'
+    // var BASEURL = 'http://39.99.130.177:8000'
 
-
-// 用来保存所有的接口信息
+// 保存所有的接口信息
 var APILIST = {
 
     // 获取文章分类
@@ -15,5 +17,13 @@ var APILIST = {
     article_rank: BASEURL + '/rank',
 
     // 最新文章
-    article_last: BASEURL + '/lastest'
+    article_last: BASEURL + '/lastest',
+
+    // 获取文章详情
+    article_detail: BASEURL + '/article',
+
+    // 添加评论
+    comment_add: BASEURL + '/post_comment',
+    // 获取评论
+    comment_get: BASEURL + '/get_comments'
 }

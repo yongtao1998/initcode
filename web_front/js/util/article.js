@@ -1,4 +1,4 @@
-// 把所有与文章相关的操作写在这里
+// 所有与文章相关的操作
 
 var article = {
     /**
@@ -19,7 +19,8 @@ var article = {
 
     /**
      * 获取文章排行
-     * @param {*} type 
+     * @param {*} type  文章类别编号 
+     * 如果不传则在全部的类别中进行排行。
      */
     getRank: function(type) {
         return $.get(APILIST.article_rank, { 'type': type })
@@ -32,10 +33,10 @@ var article = {
         return $.get(APILIST.article_last)
     },
 
-    /**
-     * 获取列表页的数据
-     * type:文章类型编号
-     * page:当前第几页
+    /***
+     * 在列表页中，用来获取文章列表数据
+     * type: 文章类型编号
+     * page: 当前第几页
      */
     getList: function(type, page) {
         return $.get(APILIST.article_get, { 'type': type, 'page': page })
@@ -48,5 +49,4 @@ var article = {
     getDetail: function(id) {
         return $.get(APILIST.article_detail, { 'id': id })
     }
-
 }
