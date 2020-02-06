@@ -8,6 +8,7 @@ var article = {
         // 因为只要5条数据，所以直接设置只获取5条
         return $.get(APILIST.article_get, { perpage: 5 })
     },
+
     /**
      * 根据id去获取文章的详情
      * @param {Number}} id 
@@ -15,6 +16,7 @@ var article = {
     getById: function(id) {
         return $.get(APILIST.article_get, { 'id': id })
     },
+
     /**
      * 获取文章排行
      * @param {*} type 
@@ -22,11 +24,29 @@ var article = {
     getRank: function(type) {
         return $.get(APILIST.article_rank, { 'type': type })
     },
+
     /**
      * 获取最新的文章
      */
     getLastest: function() {
         return $.get(APILIST.article_last)
+    },
+
+    /**
+     * 获取列表页的数据
+     * type:文章类型编号
+     * page:当前第几页
+     */
+    getList: function(type, page) {
+        return $.get(APILIST.article_get, { 'type': type, 'page': page })
+    },
+
+    /**
+     * 获取文章详情
+     * @param {*} id 文章编号
+     */
+    getDetail: function(id) {
+        return $.get(APILIST.article_detail, { 'id': id })
     }
 
 }
