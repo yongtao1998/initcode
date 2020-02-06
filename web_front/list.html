@@ -182,6 +182,18 @@
 </script>
 
 <!-- 排行榜 -->
+<script id="tmpRank" type="text/html">
+    {{each data item idx}} {{if idx == 0}}
+    <li><span class="first">{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+    {{else if idx == 1}}
+    <li><span class="second">{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+    {{else if idx == 2}}
+    <li><span class="third">{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+    {{else}}
+    <li><span>{{idx+1}}</span><a href="./article.html?id={{item.id}}">{{item.title}}</a></li>
+    {{/if}} {{/each}}
+</script>
+
 
 <script>
     // 1. 从地址栏中获取出id
@@ -251,6 +263,15 @@
     }
 
     // 4. 排行榜列表
+    article.getRank(id).then(function(res) {
+        if (res.code == 200) {
+            //渲染
+            var htmlStr = template('tmpRank', res)
+            $('#rank').html(htmlStr)
+        } else {
+            alert(res.msg)
+        }
+    })
 </script>
 
 </html>
