@@ -205,8 +205,8 @@
     category.get().then(function(res) {
         // 补充一个属性来保存当前的类别编号，以方便在模板内部来获取这个编号
         res.curId = id
-        console.log(res);
-        // 渲染结构
+            // console.log(res);
+            // 渲染结构
         var htmlStr = template('cate', res)
 
         // 显示
