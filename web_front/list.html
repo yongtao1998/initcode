@@ -226,9 +226,7 @@
     // 3. 显示文章列表
     // 刚开始显示第一页的内容
     var curPage = 1;
-    getAndShow()
-        // 定义函数 点击的时候触发
-    function getAndShow() {
+    let getAndShow = () => {
         article.getList(id, curPage).then(function(res) {
             var htmlStr = template('tmpNews', res)
             $('#list').html(htmlStr)
@@ -262,6 +260,9 @@
             });
         })
     }
+
+    getAndShow()
+        // 定义函数 点击的时候触发
 
     // 4. 排行榜列表
     article.getRank(id).then(function(res) {

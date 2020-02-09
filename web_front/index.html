@@ -226,11 +226,11 @@
     // 1. 获取文章的类型并显示
     category.get().then(function(res) {
         // 渲染结构
-        var htmlStr = template('cate', res)
+        let htmlStr = template('cate', res)
 
         // 替换整个容器中的html
         $('#left_menu').html(htmlStr);
-        console.log(res);
+        // console.log(res);
 
         // 追加一些内容
         $('#level_two_menu').append(htmlStr)
@@ -239,10 +239,10 @@
     // 2. 显示焦点图
     //  调用接口，获取数据，template渲染
     article.getFouceFive().then(function(res) {
-        console.log(res);
+        // console.log(res);
         if (res.code === 200) {
             // 渲染
-            var htmlStr = template("focus", res)
+            let htmlStr = template("focus", res)
                 // console.log(htmlStr);
             $('#focus_list').html(htmlStr)
 
@@ -256,7 +256,7 @@
     article.getRank().then(function(res) {
         if (res.code === 200) {
             // 渲染
-            var htmlStr = template('tmpRank', res)
+            let htmlStr = template('tmpRank', res)
             $('#rank').html(htmlStr)
         } else {
             alert(res.msg)
@@ -267,7 +267,7 @@
     article.getLastest().then(function(res) {
         if (res.code === 200) {
             // 渲染
-            var htmlStr = template('tmpNews', res)
+            let htmlStr = template('tmpNews', res)
             $('#news_list').html(htmlStr)
         } else {
             alert(res.msg)

@@ -1,11 +1,10 @@
 // 配置文件
-// 这个项目中所有用到的接口地址
 // 所有接口的基地址
-var BASEURL = 'http://localhost:8000'
+const BASEURL = 'http://localhost:8000'
     // var BASEURL = 'http://39.99.130.177:8000'
 
 // 保存所有的接口信息
-var APILIST = {
+let APILIST = {
 
     // 获取文章分类
     category_get: BASEURL + '/category',
